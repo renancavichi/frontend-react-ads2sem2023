@@ -8,11 +8,9 @@ const CardUser = ({user}) => {
   const [showCard, setShowCard] = useState(true)
 
   const handleDelete = async (idUser) => {
-
     const objUser = {
       id: idUser
     }
-  
     const response = await fetch('http://localhost:3300/user',
       {
         cache: 'no-store',
@@ -23,7 +21,6 @@ const CardUser = ({user}) => {
         body: JSON.stringify(objUser)
       }
     )
-    
     if(response.ok){
       const result = await response.json()
       if(result?.success){
@@ -32,13 +29,12 @@ const CardUser = ({user}) => {
     }
   }
 
-  
   return (
     <>
       {
-        showCard ?
+      showCard ?
         <div className="card-user">
-        <img src={user.photo} alt={user.name} width="70px" height="70px" />
+          <img src={user.photo} alt={user.name} width="70px" height="70px" />
           <div>
               <h4>{user.name}</h4>
               <p>{user.email}</p>
