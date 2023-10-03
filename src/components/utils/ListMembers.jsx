@@ -39,9 +39,9 @@ const ListMembers = () => {
             const result = await response.json()
             if(result?.success){
                 setUsers([...users, result.user])
+                setModalSignInIsOpen(false)
             }
         }
-
     }
 
     return (
@@ -51,7 +51,7 @@ const ListMembers = () => {
         {
         users.map((user) => {
             return (
-            <CardUser key={user.id} user={user} />
+            <CardUser key={user.id} user={user} users={users} setUsers={setUsers} />
             )
         })
         }
